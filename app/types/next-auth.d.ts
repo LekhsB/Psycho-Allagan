@@ -1,0 +1,35 @@
+import "next-auth";
+import { JWT } from "next-auth/jwt";
+
+declare module "next-auth" {
+  /**
+   * Extension du type User pour inclure des champs supplémentaires
+   */
+  interface User {
+    id?: string;
+    role?: string;
+  }
+
+  /**
+   * Extension de la session utilisateur pour inclure les champs personnalisés
+   */
+  interface Session {
+    user: {
+      id?: string;
+      name?: string | null;
+      email?: string | null;
+      image?: string | null;
+      role?: string;
+    }
+  }
+}
+
+declare module "next-auth/jwt" {
+  /**
+   * Extension du JWT pour inclure les champs supplémentaires
+   */
+  interface JWT {
+    id?: string;
+    role?: string;
+  }
+} 

@@ -1,0 +1,35 @@
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fond du logo -->
+  <circle cx="60" cy="60" r="60" fill="#1A1A1A"/>
+  
+  <!-- Symbole stylisé - lettres PA entrelacées -->
+  <path d="M40 35C40 32.2386 42.2386 30 45 30H65C77.1503 30 87 39.8497 87 52C87 64.1503 77.1503 74 65 74H55V90C55 92.7614 52.7614 95 50 95C47.2386 95 45 92.7614 45 90V40C45 37.2386 42.7614 35 40 35Z" fill="url(#paint0_linear)"/>
+  
+  <path d="M55 54C55 51.2386 57.2386 49 60 49H75C77.7614 49 80 51.2386 80 54C80 56.7614 77.7614 59 75 59H65V69C65 71.7614 62.7614 74 60 74C57.2386 74 55 71.7614 55 69V54Z" fill="#1A1A1A"/>
+  
+  <!-- Bordure du symbole -->
+  <path d="M40 35C40 32.2386 42.2386 30 45 30H65C77.1503 30 87 39.8497 87 52C87 64.1503 77.1503 74 65 74H55V90C55 92.7614 52.7614 95 50 95C47.2386 95 45 92.7614 45 90V40C45 37.2386 42.7614 35 40 35Z" stroke="url(#paint1_linear)" stroke-width="2"/>
+  
+  <path d="M55 54C55 51.2386 57.2386 49 60 49H75C77.7614 49 80 51.2386 80 54C80 56.7614 77.7614 59 75 59H65V69C65 71.7614 62.7614 74 60 74C57.2386 74 55 71.7614 55 69V54Z" stroke="url(#paint2_linear)" stroke-width="2"/>
+  
+  <!-- Définitions des dégradés -->
+  <defs>
+    <linearGradient id="paint0_linear" x1="30" y1="30" x2="90" y2="95" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#9333EA"/>
+      <stop offset="0.5" stop-color="#3B82F6"/>
+      <stop offset="1" stop-color="#EF4444"/>
+    </linearGradient>
+    
+    <linearGradient id="paint1_linear" x1="40" y1="30" x2="87" y2="95" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A855F7"/>
+      <stop offset="0.5" stop-color="#60A5FA"/>
+      <stop offset="1" stop-color="#F87171"/>
+    </linearGradient>
+    
+    <linearGradient id="paint2_linear" x1="55" y1="49" x2="80" y2="74" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A855F7"/>
+      <stop offset="0.5" stop-color="#60A5FA"/>
+      <stop offset="1" stop-color="#F87171"/>
+    </linearGradient>
+  </defs>
+</svg> 

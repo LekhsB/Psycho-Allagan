@@ -1,8 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a0a;
+  --foreground: #f0f0f0;
+  
+  /* Couleurs principales */
+  --violet-primary: #9333ea;
+  --red-primary: #ef4444;
+  --blue-primary: #3b82f6;
+  
+  /* Couleurs néon */
+  --violet-neon: #a855f7;
+  --red-neon: #f87171;
+  --blue-neon: #60a5fa;
 }
 
 @theme inline {
@@ -22,5 +32,467 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Animation pour les bordures */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes reverse-spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+.animate-reverse-spin-slow {
+  animation: reverse-spin-slow 25s linear infinite;
+}
+
+/* Pattern de grille cyberpunk */
+.bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(99, 102, 241, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(99, 102, 241, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Ajustement de l'espacement pour la navbar fixe */
+.pt-navbar {
+  padding-top: 5rem;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Effets de texte cyberpunk */
+.text-glitch {
+  position: relative;
+  display: inline-block;
+}
+
+.text-glitch::before,
+.text-glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.text-glitch::before {
+  left: 2px;
+  text-shadow: -2px 0 var(--red-neon);
+  clip: rect(24px, 550px, 90px, 0);
+  animation: glitch-animation 3s infinite linear alternate-reverse;
+}
+
+.text-glitch::after {
+  left: -2px;
+  text-shadow: -2px 0 var(--blue-neon);
+  clip: rect(85px, 550px, 140px, 0);
+  animation: glitch-animation 2.5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-animation {
+  0% {
+    clip: rect(54px, 9999px, 31px, 0);
+  }
+  5% {
+    clip: rect(97px, 9999px, 92px, 0);
+  }
+  10% {
+    clip: rect(27px, 9999px, 97px, 0);
+  }
+  15% {
+    clip: rect(39px, 9999px, 49px, 0);
+  }
+  20% {
+    clip: rect(68px, 9999px, 69px, 0);
+  }
+  25% {
+    clip: rect(93px, 9999px, 54px, 0);
+  }
+  30% {
+    clip: rect(69px, 9999px, 22px, 0);
+  }
+  35% {
+    clip: rect(54px, 9999px, 81px, 0);
+  }
+  40% {
+    clip: rect(45px, 9999px, 59px, 0);
+  }
+  45% {
+    clip: rect(82px, 9999px, 37px, 0);
+  }
+  50% {
+    clip: rect(38px, 9999px, 57px, 0);
+  }
+  55% {
+    clip: rect(63px, 9999px, 76px, 0);
+  }
+  60% {
+    clip: rect(23px, 9999px, 73px, 0);
+  }
+  65% {
+    clip: rect(89px, 9999px, 79px, 0);
+  }
+  70% {
+    clip: rect(26px, 9999px, 32px, 0);
+  }
+  75% {
+    clip: rect(91px, 9999px, 47px, 0);
+  }
+  80% {
+    clip: rect(24px, 9999px, 53px, 0);
+  }
+  85% {
+    clip: rect(39px, 9999px, 79px, 0);
+  }
+  90% {
+    clip: rect(48px, 9999px, 49px, 0);
+  }
+  95% {
+    clip: rect(98px, 9999px, 11px, 0);
+  }
+  100% {
+    clip: rect(34px, 9999px, 97px, 0);
+  }
+}
+
+/* Effet de flou néon */
+.neon-glow {
+  text-shadow: 
+    0 0 5px var(--blue-neon),
+    0 0 10px var(--blue-neon),
+    0 0 20px var(--blue-neon),
+    0 0 40px var(--blue-neon);
+}
+
+.neon-glow-red {
+  text-shadow: 
+    0 0 5px var(--red-neon),
+    0 0 10px var(--red-neon),
+    0 0 20px var(--red-neon),
+    0 0 40px var(--red-neon);
+}
+
+.neon-glow-violet {
+  text-shadow: 
+    0 0 5px var(--violet-neon),
+    0 0 10px var(--violet-neon),
+    0 0 20px var(--violet-neon),
+    0 0 40px var(--violet-neon);
+}
+
+/* Effets de texte cyberpunk */
+.text-glitch {
+  position: relative;
+  display: inline-block;
+}
+
+.text-glitch::before,
+.text-glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.text-glitch::before {
+  left: 2px;
+  text-shadow: -2px 0 var(--red-neon);
+  clip: rect(24px, 550px, 90px, 0);
+  animation: glitch-animation 3s infinite linear alternate-reverse;
+}
+
+.text-glitch::after {
+  left: -2px;
+  text-shadow: -2px 0 var(--blue-neon);
+  clip: rect(85px, 550px, 140px, 0);
+  animation: glitch-animation 2.5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-animation {
+  0% {
+    clip: rect(54px, 9999px, 31px, 0);
+  }
+  5% {
+    clip: rect(97px, 9999px, 92px, 0);
+  }
+  10% {
+    clip: rect(27px, 9999px, 97px, 0);
+  }
+  15% {
+    clip: rect(39px, 9999px, 49px, 0);
+  }
+  20% {
+    clip: rect(68px, 9999px, 69px, 0);
+  }
+  25% {
+    clip: rect(93px, 9999px, 54px, 0);
+  }
+  30% {
+    clip: rect(69px, 9999px, 22px, 0);
+  }
+  35% {
+    clip: rect(54px, 9999px, 81px, 0);
+  }
+  40% {
+    clip: rect(45px, 9999px, 59px, 0);
+  }
+  45% {
+    clip: rect(82px, 9999px, 37px, 0);
+  }
+  50% {
+    clip: rect(38px, 9999px, 57px, 0);
+  }
+  55% {
+    clip: rect(63px, 9999px, 76px, 0);
+  }
+  60% {
+    clip: rect(23px, 9999px, 73px, 0);
+  }
+  65% {
+    clip: rect(89px, 9999px, 79px, 0);
+  }
+  70% {
+    clip: rect(26px, 9999px, 32px, 0);
+  }
+  75% {
+    clip: rect(91px, 9999px, 47px, 0);
+  }
+  80% {
+    clip: rect(24px, 9999px, 53px, 0);
+  }
+  85% {
+    clip: rect(39px, 9999px, 79px, 0);
+  }
+  90% {
+    clip: rect(48px, 9999px, 49px, 0);
+  }
+  95% {
+    clip: rect(98px, 9999px, 11px, 0);
+  }
+  100% {
+    clip: rect(34px, 9999px, 97px, 0);
+  }
+}
+
+/* Effet de flou néon */
+.neon-glow {
+  text-shadow: 
+    0 0 5px var(--blue-neon),
+    0 0 10px var(--blue-neon),
+    0 0 20px var(--blue-neon),
+    0 0 40px var(--blue-neon);
+}
+
+.neon-glow-red {
+  text-shadow: 
+    0 0 5px var(--red-neon),
+    0 0 10px var(--red-neon),
+    0 0 20px var(--red-neon),
+    0 0 40px var(--red-neon);
+}
+
+.neon-glow-violet {
+  text-shadow: 
+    0 0 5px var(--violet-neon),
+    0 0 10px var(--violet-neon),
+    0 0 20px var(--violet-neon),
+    0 0 40px var(--violet-neon);
+}
+
+/* Gradients pour les rôles */
+.gradient-tank {
+  background: linear-gradient(135deg, #375a7f 0%, #2a4365 100%);
+}
+
+.gradient-healer {
+  background: linear-gradient(135deg, #38a169 0%, #276749 100%);
+}
+
+.gradient-dps {
+  background: linear-gradient(135deg, #e53e3e 0%, #9b2c2c 100%);
+}
+
+.text-gradient-primary {
+  background: linear-gradient(135deg, #6366f1 0%, #818cf8 50%, #a5b4fc 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-blur {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.bg-glass {
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Animations pour les composants */
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s infinite ease-in-out;
+}
+
+/* Style pour les onglets */
+.tab-active {
+  position: relative;
+  overflow: hidden;
+}
+
+.tab-active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #6366f1, transparent);
+}
+
+/* Style pour les cartes */
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.4);
+}
+
+/* Style pour les étoiles de difficulté */
+.difficulty-stars {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Styles pour la galerie */
+.gallery-item {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(147, 51, 234, 0.3);
+}
+
+/* Overlay pour les médias */
+.media-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.media-item:hover .media-overlay {
+  opacity: 1;
+}
+
+/* Animation pour le modal de galerie */
+@keyframes fade-in-scale {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal-animation {
+  animation: fade-in-scale 0.3s ease forwards;
+}
+
+/* Effets de survol sur les boutons de filtres */
+.filter-button {
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.filter-button:hover:not(.active) {
+  background-color: rgba(139, 92, 246, 0.2);
+}
+
+.filter-button.active {
+  background-color: rgba(139, 92, 246, 0.7);
+  transform: scale(1.05);
+}
+
+/* Zoom sur les images lors du survol */
+.image-zoom-container {
+  overflow: hidden;
+}
+
+.image-zoom {
+  transition: transform 0.5s ease;
+}
+
+.image-zoom:hover {
+  transform: scale(1.1);
+}
+
+/* Animation des likes */
+@keyframes heart-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.heart-animation {
+  animation: heart-pulse 0.5s ease;
+}
+
+/* Masonry grid pour la galerie */
+.masonry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-auto-rows: 10px;
+  grid-gap: 16px;
 }
