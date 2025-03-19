@@ -188,7 +188,7 @@ const ThemeShowcase = () => {
           {/* Détails du thème */}
           <div className="bg-black/60 backdrop-blur-sm border border-purple-800/30 rounded-xl p-6">
             <div className="space-y-6">
-              <div>
+            <div>
                 <h3 className="text-2xl font-bold text-white mb-4">Description</h3>
                 <p className="text-gray-300">{currentTheme.description}</p>
               </div>
@@ -210,7 +210,7 @@ const ThemeShowcase = () => {
                         <li key={index} className="text-gray-400">{track}</li>
                       ))}
                     </ul>
-                  </li>
+                    </li>
                 </ul>
               </div>
               
@@ -237,8 +237,8 @@ const ThemeShowcase = () => {
                             {ingredient}
                           </span>
                         ))}
-                      </div>
-                    </div>
+              </div>
+                  </div>
                   )}
                 </div>
               </div>

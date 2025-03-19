@@ -26,5 +26,6 @@ export const config = {
     '/profile/:path*',
     '/events/my-events/:path*',
     '/admin/:path*',
+    '/evenements/:path*',
   ]
 }; 

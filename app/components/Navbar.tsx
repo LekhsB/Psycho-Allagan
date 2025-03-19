@@ -113,7 +113,12 @@ export default function Navbar() {
               <NavLink href="/tutorials">Tutoriels</NavLink>
               <NavLink href="/nightclub">Nightclub</NavLink>
               <NavLink href="/galerie">Galerie</NavLink>
-              <NavLink href="/recrutement">Recrutement</NavLink>
+              {!isLoggedIn && (
+                <NavLink href="/recrutement">Recrutement</NavLink>
+              )}
+              {isLoggedIn && (
+                <NavLink href="/evenements">Événements</NavLink>
+              )}
               {/* Garder uniquement les liens vers les pages existantes */}
               {/* D'autres liens seront ajoutés ici au fur et à mesure de la création des pages */}
               
@@ -303,13 +308,25 @@ export default function Navbar() {
             Galerie
           </Link>
           
-          <Link 
-            href="/recrutement"
-            className="block px-4 py-3 text-gray-300 hover:bg-violet-900/20 hover:text-white rounded-md transition-colors duration-200"
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            Recrutement
-          </Link>
+          {!isLoggedIn && (
+            <Link 
+              href="/recrutement"
+              className="block px-4 py-3 text-gray-300 hover:bg-violet-900/20 hover:text-white rounded-md transition-colors duration-200"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Recrutement
+            </Link>
+          )}
+          
+          {isLoggedIn && (
+            <Link 
+              href="/evenements"
+              className="block px-4 py-3 text-gray-300 hover:bg-violet-900/20 hover:text-white rounded-md transition-colors duration-200"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Événements
+            </Link>
+          )}
           
           <div className="border-t border-violet-500/20 my-2"></div>
           
