@@ -1,80 +1,73 @@
-import UserProfileDisplay from "../components/user/UserProfileDisplay";
-import Link from "next/link";
+import { Metadata } from 'next';
+import Link from 'next/link';
+import { FaUserCog, FaCalendarAlt, FaSignOutAlt, FaUserEdit } from 'react-icons/fa';
 
-export const metadata = {
-  title: "Profil | Psycho Allagan",
-  description: "Gérez votre profil membre de la compagnie libre Psycho Allagan sur Final Fantasy XIV.",
+import UserProfileDisplay from '../components/user/UserProfileDisplay';
+
+export const metadata: Metadata = {
+  title: 'Profil | Psycho Allagan',
+  description: 'Gérez votre profil et vos paramètres personnels',
 };
 
 export default function ProfilePage() {
   return (
-    <div className="container mx-auto px-4 py-16">
-      <div className="max-w-4xl mx-auto">
-        <div className="mb-10">
+    <div className="container mx-auto p-4 md:p-8">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 md:mb-12">
+        <div>
           <h1 className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-500 via-blue-500 to-red-500 mb-2">
-            Profil Utilisateur
+            Mon Profil
           </h1>
           <p className="text-gray-400">
-            Gérez votre profil et vos informations personnelles
+            Gérez votre profil et vos paramètres personnels
           </p>
-          <div className="h-1 w-20 bg-gradient-to-r from-violet-500 via-blue-500 to-red-500 rounded-full mt-4"></div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-          {/* Colonne de gauche - Profil */}
-          <div className="md:col-span-5">
-            <UserProfileDisplay showDetails={true} />
-          </div>
-          
-          {/* Colonne de droite - Options et liens */}
-          <div className="md:col-span-7">
-            <div className="bg-black/40 backdrop-blur-md rounded-xl border border-violet-500/20 overflow-hidden shadow-[0_5px_20px_rgba(147,51,234,0.2)] p-6">
-              <h2 className="text-xl font-bold text-white mb-6">
-                Options du profil
+        <div className="mt-4 md:mt-0 flex space-x-4">
+          <Link 
+            href="/profile/edit" 
+            className="inline-flex items-center px-4 py-2 rounded-md bg-gradient-to-r from-violet-600 to-blue-600 text-white font-medium hover:from-violet-700 hover:to-blue-700 transition-colors"
+          >
+            <FaUserEdit className="mr-2" />
+            Modifier mon profil
+          </Link>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="lg:col-span-1">
+          <UserProfileDisplay />
+        </div>
+        
+        <div className="lg:col-span-2 space-y-6">
+          <div className="bg-black/40 backdrop-blur-md rounded-xl border border-violet-500/20 overflow-hidden shadow-lg">
+            <div className="p-6">
+              <h2 className="text-xl font-bold text-white mb-4 flex items-center">
+                <FaUserCog className="mr-2 text-blue-400" />
+                Gestion du compte
               </h2>
               
-              <div className="space-y-4">
-                <Link 
-                  href="/events/my-events"
-                  className="flex items-center p-4 bg-gradient-to-r from-violet-900/30 to-blue-900/30 rounded-lg border border-violet-500/20 hover:border-violet-500/50 transition-all hover:shadow-[0_0_15px_rgba(139,92,246,0.3)] group"
-                >
-                  <div className="h-10 w-10 rounded-full bg-violet-500/20 flex items-center justify-center mr-4 group-hover:bg-violet-500/30 transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <Link href="/events/my-events" className="group flex flex-col p-4 rounded-lg bg-gray-900/50 hover:bg-gray-800/70 transition-colors">
+                  <div className="flex items-center mb-2">
+                    <div className="w-10 h-10 rounded-full bg-blue-600/30 flex items-center justify-center mr-3">
+                      <FaCalendarAlt className="text-blue-400" />
+                    </div>
+                    <h3 className="font-semibold text-white">Mes événements</h3>
                   </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-white">Mes événements</h3>
-                    <p className="text-sm text-gray-400">Gérez vos inscriptions aux événements</p>
-                  </div>
+                  <p className="text-sm text-gray-400">Gérez vos inscriptions aux événements</p>
+                  <div className="h-0.5 w-0 group-hover:w-full bg-gradient-to-r from-blue-500 to-violet-500 mt-3 transition-all duration-300"></div>
                 </Link>
                 
-                <Link 
-                  href="/auth/signout"
-                  className="flex items-center p-4 bg-gradient-to-r from-red-900/30 to-red-800/30 rounded-lg border border-red-500/20 hover:border-red-500/50 transition-all hover:shadow-[0_0_15px_rgba(239,68,68,0.3)] group"
-                >
-                  <div className="h-10 w-10 rounded-full bg-red-500/20 flex items-center justify-center mr-4 group-hover:bg-red-500/30 transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-                    </svg>
+                <Link href="/auth/signout" className="group flex flex-col p-4 rounded-lg bg-gray-900/50 hover:bg-gray-800/70 transition-colors">
+                  <div className="flex items-center mb-2">
+                    <div className="w-10 h-10 rounded-full bg-red-600/30 flex items-center justify-center mr-3">
+                      <FaSignOutAlt className="text-red-400" />
+                    </div>
+                    <h3 className="font-semibold text-white">Déconnexion</h3>
                   </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-white">Déconnexion</h3>
-                    <p className="text-sm text-gray-400">Se déconnecter de votre compte</p>
-                  </div>
+                  <p className="text-sm text-gray-400">Se déconnecter du site</p>
+                  <div className="h-0.5 w-0 group-hover:w-full bg-gradient-to-r from-red-500 to-violet-500 mt-3 transition-all duration-300"></div>
                 </Link>
-              </div>
-              
-              <div className="mt-8 p-4 bg-blue-900/20 rounded-lg border border-blue-500/20">
-                <h3 className="text-lg font-semibold text-white flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-400 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  Informations
-                </h3>
-                <p className="text-sm text-gray-400 mt-2">
-                  Votre profil est automatiquement créé à partir de votre compte Discord. Pour modifier votre nom ou votre avatar, vous devez les changer sur Discord directement.
-                </p>
               </div>
             </div>
           </div>
