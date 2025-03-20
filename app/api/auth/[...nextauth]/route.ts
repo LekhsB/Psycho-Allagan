@@ -15,6 +15,7 @@ const handler = NextAuth({
   // Configuration de la session
   session: {
     strategy: "jwt",
+    maxAge: 30 * 24 * 60 * 60, // 30 jours
   },
   // Personnaliser la page de connexion et les urls de redirection
   pages: {
@@ -30,9 +31,14 @@ const handler = NextAuth({
         token.id = user.id;
         
         // Si vous avez des rôles spécifiques pour les membres
-        if (user.email === "admin@psychoallagan.fr" || 
-            user.email?.endsWith("@admin.psychoallagan.fr")) {
+        if (user.email === "pierrick.leclercq.pro@gmail.com" || 
+            user.email?.endsWith("@admin.psychoallagan.fr") ||
+            user.name === "lekhslecafeine") {
           token.role = "admin";
+        } else if (user.email === "roster@psychoallagan.fr" ||
+                  user.email?.endsWith("@roster.psychoallagan.fr") ||
+                  user.email?.includes("raid-lead")) {
+          token.role = "roster";
         } else {
           token.role = "member";
         }
@@ -61,6 +67,7 @@ const handler = NextAuth({
       return baseUrl;
     }
   },
+  debug: process.env.NODE_ENV === "development",
 });
 
 export { handler as GET, handler as POST }; 

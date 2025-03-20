@@ -75,6 +75,10 @@ export default function Navbar() {
   const isLoggedIn = status === "authenticated" && session !== null;
   const user = session?.user as UserWithRole | undefined;
   
+  // Ajouter la vérification des rôles d'admin ou roster pour les utilisateurs
+  const isAdmin = isLoggedIn && (user?.role === "admin");
+  const isRoster = isLoggedIn && (user?.role === "admin" || user?.role === "roster");
+  
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${
       scrolled 
@@ -118,6 +122,15 @@ export default function Navbar() {
               )}
               {isLoggedIn && (
                 <NavLink href="/evenements">Événements</NavLink>
+              )}
+              {isLoggedIn && (
+                <NavLink href="/strategies">Stratégies</NavLink>
+              )}
+              {isRoster && (
+                <NavLink href="/roster">Roster</NavLink>
+              )}
+              {isAdmin && (
+                <NavLink href="/admin">Administration</NavLink>
               )}
               {/* Garder uniquement les liens vers les pages existantes */}
               {/* D'autres liens seront ajoutés ici au fur et à mesure de la création des pages */}
@@ -208,6 +221,22 @@ export default function Navbar() {
                           </div>
                           <div className="mt-1 ml-11 text-xs text-gray-500">Voir et gérer votre profil</div>
                         </Link>
+                        
+                        {isAdmin && (
+                          <Link 
+                            href="/admin" 
+                            className="block px-4 py-3 text-gray-300 hover:bg-violet-900/30 hover:text-white transition-colors duration-200 group"
+                            onClick={() => setUserMenuOpen(false)}
+                          >
+                            <div className="flex items-center">
+                              <div className="w-8 h-8 rounded-full bg-violet-500/10 flex items-center justify-center mr-3 group-hover:bg-violet-500/20 transition-colors">
+                                <FaUser className="text-violet-400" />
+                              </div>
+                              <span>Administration</span>
+                            </div>
+                            <div className="mt-1 ml-11 text-xs text-gray-500">Gérer le site</div>
+                          </Link>
+                        )}
                         
                         <div className="border-t border-violet-500/20 my-1"></div>
                         
@@ -325,6 +354,26 @@ export default function Navbar() {
               onClick={() => setMobileMenuOpen(false)}
             >
               Événements
+            </Link>
+          )}
+          
+          {isLoggedIn && (
+            <Link 
+              href="/strategies"
+              className="block px-4 py-3 text-gray-300 hover:bg-violet-900/20 hover:text-white rounded-md transition-colors duration-200"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Stratégies
+            </Link>
+          )}
+          
+          {isRoster && (
+            <Link 
+              href="/roster"
+              className="block px-4 py-3 text-gray-300 hover:bg-violet-900/20 hover:text-white rounded-md transition-colors duration-200"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Roster
             </Link>
           )}
           
